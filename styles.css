@@ -1,133 +1,192 @@
+/* Reset and base styles */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --text-color: #333;
+    --background-color: #f8f9fa;
+    --section-bg-color: #ffffff;
+    --border-radius: 8px;
+    --spacing-unit: 0.75rem;  /* Reduced from 1rem */
+}
+
 body {
-    font-family: "Hack Nerd", "Courier New", monospace; /* Fallback fonts */
-    margin: 0;
-    padding: 10%;
-    height: 100vh;
-    /*display: flex;*/
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #74ebd5 0%, #acb6e5 100%);
-    color: #333;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;  /* Slightly reduced from 1.6 */
+    color: var(--text-color);
+    background-color: var(--background-color);
+    padding: 1.5rem;  /* Reduced from 2rem */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Container styles */
 .container {
+    background: var(--section-bg-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);  /* Reduced horizontal padding */
+    margin-bottom: var(--spacing-unit);  /* Reduced from *2 */
+}
+
+/* Header styles */
+header.container {
     text-align: center;
-    padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    margin-bottom: 10px;
-    color: #007bff;
-}
-
-p {
-    margin-bottom: 20px;
-    font-size: 1.1em;
-}
-
-a {
-    text-decoration: none;
-    padding: 10px 20px;
-    background-color: #007bff;
+    padding: calc(var(--spacing-unit) * 1.5);  /* Reduced from *2 */
+    background: var(--primary-color);
     color: white;
-    border-radius: 5px;
-    transition:
-        background-color 0.3s,
-        color 0.3s; /* Added transition for color */
 }
 
-a:hover {
-    background-color: #0056b3;
-    color: #e0e0e0; /* Optional: Adds a slight change in text color on hover */
-}
-form {
-    display: space-between;
-    flex-direction: column;
-    border: 2cm;
-    padding: 20px;
-
-    border-radius: 12px;
-}
-button {
-    padding: 8px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-li {
-    list-style-type: none;
-    margin-bottom: 10px;
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-unit);
     color: black;
+    justify-content: center;
+    display: flex;
+
 }
+
+header p {
+    display: flex;
+    gap: 0.75rem;  /* Reduced from 1rem */
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Section styles */
+section {
+    margin-bottom: var(--spacing-unit);  /* Reduced from *2 */
+}
+
+h2 {
+    color: var(--primary-color);
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-unit);  /* Reduced from *1.5 */
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+h3 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin: var(--spacing-unit) 0 calc(var(--spacing-unit) * 0.5);  /* Reduced margins */
+}
+
+/* List styles */
 ul {
-    padding: 0;
-    color: black;
+    list-style-position: inside;
+    padding-left: var(--spacing-unit);  /* Reduced from *1.5 */
 }
 
-/* Spinner Styles */
-.spinner {
-    border: 8px solid #f3f3f3; /* Light gray */
-    border-top: 8px solid #007bff; /* Blue */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
+li {
+    margin-bottom: 0.25rem;  /* Reduced from 0.5rem */
+    position: relative;
+    list-style-type: none;
 }
 
-/* Animation for spinner */
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+li::before {
+    content: "•";
+    color: var(--secondary-color);
+    position: absolute;
+    left: -1rem;  /* Slightly reduced from -1.2rem */
 }
 
-/* Center the spinner */
-#spinner {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
+/* Skills section specific styles */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;  /* Reduced from 2rem */
+    margin-top: var(--spacing-unit);
 }
 
-/* Dark overlay to disable interactions */
-#spinner-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent */
-    z-index: 999; /* Below spinner */
+.skills-column h3 {
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;  /* Reduced from 1rem */
+    padding-bottom: 0.25rem;  /* Reduced from 0.5rem */
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.skills-column ul {
+    padding-left: 0;
+}
+
+.skills-column li {
+    margin-bottom: 0.25rem;  /* Reduced from 0.5rem */
+    text-align: center;
+}
+
+.skills-column li::before {
     display: none;
 }
 
-#pdf-container {
-    bottom: 20px;
-    left: 20px;
-    position: absolute;
-    right: 20px;
-    top: 0;
+/* Experience and Projects sections */
+#experience ul, #projects ul {
+    margin-top: 0.25rem;  /* Reduced from 0.5rem */
 }
-#pdf-container #pdf {
-    height: 100%;
-    width: 100%;
+
+#experience p, #projects p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-unit);
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: var(--spacing-unit);  /* Reduced from *2 */
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 0.75rem;  /* Reduced from 1rem */
+    }
+
+    .container {
+        padding: var(--spacing-unit);
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;  /* Reduced from 1.5rem */
+    }
+
+    .skills-column {
+        padding-bottom: 0.5rem;  /* Reduced from 1rem */
+    }
+}
+
+/* Print styles remain the same */
+@media print {
+    body {
+        padding: 0;
+        background: white;
+    }
+
+    .container {
+        box-shadow: none;
+        margin-bottom: 1rem;
+    }
+
+    a {
+        color: var(--primary-color);
+    }
+
+    header {
+        background: white;
+        color: var(--primary-color);
+    }
+
+    header a {
+        color: var(--primary-color);
+        background: none;
+    }
 }
